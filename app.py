@@ -43,6 +43,6 @@ else:
     st.markdown("# あけましておめでとうございます！！")
 if st.button("今を素因数分解する"):
     str_now = dt_now.strftime("%m月%d日%H時%M分%S秒")
-    st.write(f"{str_now} を素因数分解すると {today_factorization(dt_now)} になります。")
+    st.write(f"{str_now} を素因数分解すると  \n {today_factorization(dt_now)} になります。")
 time.sleep(1)
 st.experimental_rerun()

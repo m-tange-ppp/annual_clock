@@ -1,16 +1,21 @@
 import streamlit as st
 from datetime import *
+import pytz
 from decimal import *
 import time
 from factrization import *
 
 # 年月日時刻を取得する
-dt_now = datetime.now()
+tz_japan = pytz.timezone("Asia/Tokyo")
+dt_now = datetime.now(tz_japan)
 this_year = dt_now.year
-year_start = datetime(
-    year=this_year, month=1, day=1)
-year_end = datetime(
-    year=this_year, month=12, day=31, hour=23, minute=59, second=59, microsecond=599999)
+year_start = tz_japan.localize(datetime(
+    this_year, 1, 1))
+year_end = tz_japan.localize(datetime(
+    this_year, 12, 31, 23, 59, 59, 599999))
+print(dt_now.tzinfo)
+print(year_start.tzinfo)
+print(year_end.tzinfo)
 
 # できるだけ誤差少なめに計算する
 seconds_year = (year_end - year_start).total_seconds()

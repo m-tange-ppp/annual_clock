@@ -13,9 +13,6 @@ year_start = tz_japan.localize(datetime(
     this_year, 1, 1))
 year_end = tz_japan.localize(datetime(
     this_year, 12, 31, 23, 59, 59, 599999))
-print(dt_now.tzinfo)
-print(year_start.tzinfo)
-print(year_end.tzinfo)
 
 # できるだけ誤差少なめに計算する
 seconds_year = (year_end - year_start).total_seconds()

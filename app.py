@@ -5,12 +5,12 @@ from decimal import *
 import time
 from factrization import *
 
-# 年月日時刻を取得する
+# 年月日時刻を取得する。タイムゾーンの処理に注意
 tz_japan = pytz.timezone("Asia/Tokyo")
 dt_now = datetime.now(tz_japan)
 this_year = dt_now.year
 year_start = tz_japan.localize(datetime(
-    this_year, 1, 1))
+    this_year, 1, 1)) # nowじゃない場合はlocalizeで指定しないとズレる。
 year_end = tz_japan.localize(datetime(
     this_year, 12, 31, 23, 59, 59, 599999))
 
@@ -38,7 +38,7 @@ st.write(f"{this_year}年の{rate_now_year}％が終了しました。")
 st.progress(float(rate_now_year / 100))
 st.write(f"{this_year}年が終了するまであと{div_now_year}秒です。")
 if this_year == 2023:
-    st.write("# 良いお年を！！")
+    st.write("良いお年を！！")
 else:
     st.markdown("# あけましておめでとうございます！！")
 if st.button("今を素因数分解する"):
